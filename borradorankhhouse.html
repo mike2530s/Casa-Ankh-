@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Casa Ankh</title>
+    <style>
+        /* Reset */
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta Casa Ankh */
+            --terracota-principal: rgb(170, 80, 50);
+            --terracota-sombra: rgb(150, 70, 40);
+            --gris-concreto-claro: rgb(180, 180, 170);
+            --gris-concreto-medio: rgb(140, 135, 130);
+            --verde-natural: rgb(90, 120, 60);
+            --verde-oscuro: rgb(60, 80, 40);
+            --azul-cielo: rgb(100, 170, 220);
+            --neutro-piedra: rgb(210, 195, 170);
+            --neutro-crema: rgb(200, 180, 160);
+            --marron-oscuro: rgb(40, 40, 40);
+            --negro: rgb(20, 20, 20);
+            --amarillo-mostaza: rgb(230, 180, 30);
+            
+            /* Variables de uso */
+            --bg-color: var(--marron-oscuro);
+            --text-color: var(--neutro-piedra);
+            --accent-color: var(--terracota-principal);
+            --secondary-accent: var(--amarillo-mostaza);
+            --navigation-color: rgba(140, 135, 130, 0.3);
+            --icon-default: var(--gris-concreto-claro);
+            --icon-accent: var(--neutro-piedra);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--marron-oscuro) 0%, var(--negro) 100%);
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Layout principal */
+        .main-container {
+            min-height: 100vh;
+        }
+
+        /* Sección de texto */
+        .text-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(
+                135deg, 
+                rgba(40, 40, 40, 0.9) 0%, 
+                rgba(60, 80, 40, 0.1) 50%,
+                rgba(40, 40, 40, 0.9) 100%
+            );
+        }
+
+        .text-content {
+            max-width: 600px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .text-content h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--terracota-principal), var(--amarillo-mostaza));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .text-content p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            line-height: 1.6;
+            color: var(--neutro-crema);
+            opacity: 0.9;
+        }
+
+        /* Animación de columnas del primer proyecto */
+        .animated-columns {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 35rem;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .animated-columns .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: inherit;
+            width: 100%;
+        }
+
+        .animated-columns .column-1 .item-1 {
+            height: 6rem;
+            animation: background-animation 5s 150ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-1 .item-2 {
+            height: 9rem;
+            animation: background-animation 5s 274ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-1 .item-3 {
+            height: 4.5rem;
+            animation: background-animation 5s 350ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-2 .item-1 {
+            height: 6rem;
+            animation: background-animation 5s 150ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-2 .item-2 {
+            height: 12rem;
+            animation: background-animation 5s 274ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-2 .item-3 {
+            height: 4.5rem;
+            animation: background-animation 5s 350ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-3 .item-1 {
+            height: 8rem;
+            animation: background-animation 5s 280ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-3 .item-2 {
+            height: 7rem;
+            animation: background-animation 5s 95ms infinite ease-in-out;
+        }
+
+        .animated-columns .column-3 .item-3 {
+            height: 4.5rem;
+            animation: background-animation 5s 350ms infinite ease-in-out;
+        }
+
+        .animated-columns .column .item {
+            width: inherit;
+            border-radius: 0.5rem;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 200%;
+            border: 2px solid transparent;
+            transition: border-color 0.5s ease;
+        }
+
+        @keyframes background-animation {
+            0% {
+                background-image: url(https://images.adsttc.com/media/images/686e/dca4/df5c/7801/87bd/456c/original/casa-ankh-tau-arquitetos-plus-studio-zanskar_1.gif?1752095919);
+                border-color: var(--terracota-principal);
+            }
+            30% {
+                background-image: url(https://images.adsttc.com/media/images/686e/dca4/df5c/7801/87bd/456c/original/casa-ankh-tau-arquitetos-plus-studio-zanskar_1.gif?1752095919);
+                border-color: var(--terracota-principal);
+            }
+            33% {
+                background-image: url(https://i.imgur.com/q2fhkC9.png);
+                border-color: var(--verde-natural);
+            }
+            63% {
+                background-image: url(https://i.imgur.com/q2fhkC9.png);
+                border-color: var(--verde-natural);
+            }
+            66% {
+                background-image: url(https://i.imgur.com/kptXwwy.png);
+                border-color: var(--amarillo-mostaza);
+            }
+            96% {
+                background-image: url(https://i.imgur.com/kptXwwy.png);
+                border-color: var(--amarillo-mostaza);
+            }
+            100% {
+                background-image: url(https://images.adsttc.com/media/images/686e/dca4/df5c/7801/87bd/456c/original/casa-ankh-tau-arquitetos-plus-studio-zanskar_1.gif?1752095919);
+                border-color: var(--terracota-principal);
+            }
+        }
+
+        /* Indicador de scroll */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--amarillo-mostaza);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Sección de sliders */
+        .sliders-section {
+            padding: 2rem;
+            background: linear-gradient(
+                to bottom,
+                rgba(40, 40, 40, 1) 0%,
+                rgba(60, 80, 40, 0.1) 50%,
+                rgba(40, 40, 40, 1) 100%
+            );
+        }
+
+        .slider-container {
+            margin-bottom: 4rem;
+        }
+
+        .slider-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: var(--terracota-principal);
+            font-weight: bold;
+        }
+
+        .slider-description {
+            color: var(--neutro-crema);
+            opacity: 0.9;
+        }
+
+        /* Estilos del slider */
+        .image-slider {
+            display: flex;
+            flex-flow: column;
+            width: clamp(360px, 96vw, 830px);
+            aspect-ratio: 16 / 9;
+            min-height: 300px;
+            overflow: hidden;
+            border-radius: 12px;
+            container-type: inline-size;
+            contain: content;
+            background: linear-gradient(135deg, var(--gris-concreto-medio), var(--marron-oscuro));
+            box-shadow: 
+                0 4px 6px rgba(170, 80, 50, 0.1),
+                0 8px 25px rgba(40, 40, 40, 0.3),
+                0 16px 35px rgba(20, 20, 20, 0.2);
+            margin: 0 auto;
+            border: 1px solid rgba(170, 80, 50, 0.2);
+        }
+
+        .slider__content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slider-control--button {
+            border: 0;
+            background: 0;
+            outline: 0;
+            cursor: pointer;
+            place-content: center;
+            padding-inline: 3vw;
+            z-index: 1;
+            display: grid;
+            transition: all 0.3s ease;
+        }
+
+        .icon {
+            height: 2rem;
+            width: 2rem;
+            fill: var(--icon-default);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .slider-control--button:where(:hover) {
+            background-image: linear-gradient(
+                to var(--position),
+                transparent 0%,
+                rgba(170, 80, 50, 0.1),
+                80%,
+                rgba(170, 80, 50, 0.2) 100%
+            );
+        }
+
+        .slider-control--button:where(:hover) .icon {
+            fill: var(--terracota-principal);
+            background: rgba(170, 80, 50, 0.1);
+        }
+
+        .slider-control--button:active {
+            outline: 0.2em solid var(--amarillo-mostaza);
+            outline-offset: -0.5em;
+        }
+
+        .prev-button {
+            --position: left;
+        }
+        
+        .next-button {
+            --position: right;
+        }
+
+        .image-display {
+            position: fixed;
+            inset: 0;
+        }
+
+        .slider-navigation {
+            z-index: 10;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-columns: 100%;
+            gap: 1.25rem;
+            padding: 1rem;
+            place-content: center;
+            background: linear-gradient(
+                135deg,
+                rgba(140, 135, 130, 0.4) 0%,
+                rgba(210, 195, 170, 0.1) 100%
+            );
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-button {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5em;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            aspect-ratio: 16 / 9;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(170, 80, 50, 0.3);
+        }
+
+        .thumbnail {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        .nav-button[aria-selected="true"] {
+            scale: 1.1;
+            border-color: var(--terracota-principal);
+            box-shadow: 0 0 15px rgba(170, 80, 50, 0.4);
+        }
+
+        .nav-button[aria-selected="true"],
+        .nav-button:focus-visible {
+            outline: 0.2em solid var(--amarillo-mostaza);
+            outline-offset: 0.2em;
+        }
+
+        .nav-button[aria-selected="false"] {
+            filter: opacity(0.6) saturate(0.7);
+        }
+
+        .nav-button[aria-selected="false"]:where(:hover, :focus-visible) {
+            filter: opacity(1) saturate(1);
+            border-color: var(--terracota-sombra);
+        }
+
+        /* Layout desktop */
+        @media (min-width: 1024px) {
+            .main-container {
+                display: block;
+            }
+
+            .text-section {
+                width: 100%;
+                position: relative;
+                height: 100vh;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+                padding: 2rem 4rem;
+            }
+
+            .text-content {
+                max-width: none;
+                text-align: left;
+            }
+
+            .text-content h1 {
+                text-align: left;
+                margin-bottom: 2rem;
+            }
+
+            .text-content p {
+                text-align: left;
+            }
+
+            .animated-columns {
+                margin-top: 0;
+                max-width: 40rem;
+                justify-self: center;
+            }
+
+            .sliders-section {
+                width: 100%;
+                margin-left: 0;
+                padding: 2rem 4rem;
+            }
+
+            .slider-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+                margin-bottom: 6rem;
+            }
+
+            .slider-container:nth-child(even) {
+                grid-template-columns: 1fr 1fr;
+                direction: rtl;
+            }
+
+            .slider-container:nth-child(even) * {
+                direction: ltr;
+            }
+
+            .slider-title {
+                text-align: left;
+                margin-bottom: 1rem;
+                font-size: 2rem;
+            }
+
+            .slider-description {
+                color: var(--neutro-crema);
+                line-height: 1.6;
+                font-size: 1.1rem;
+                opacity: 0.9;
+            }
+
+            .image-slider {
+                max-width: 600px;
+                margin: 0;
+            }
+
+            .scroll-indicator {
+                display: flex;
+                grid-column: span 2;
+                justify-self: center;
+            }
+        }
+
+        /* Mobile responsive */
+        @container (max-width: 660px) {
+            .nav-button:not(:has(img)) {
+                background: linear-gradient(135deg, var(--gris-concreto-claro), var(--neutro-piedra));
+            }
+
+            .slider-navigation {
+                display: flex;
+                justify-content: center;
+                padding-block: 1.5em;
+            }
+
+            .nav-button {
+                inline-size: 0.625rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+            }
+
+            .nav-button > .thumbnail {
+                display: none;
+            }
+
+            .nav-button[aria-selected="true"] {
+                background: linear-gradient(135deg, var(--terracota-principal), var(--amarillo-mostaza));
+                scale: 1.5;
+                border-color: var(--amarillo-mostaza);
+                box-shadow: 0 0 10px rgba(230, 180, 30, 0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Sección de texto -->
+        <section class="text-section">
+            <div class="text-content">
+                <h1>CASA ANKH</h1>
+                <p>Un proyecto arquitectónico que fusiona la modernidad con la naturaleza. Aquí puedes explorar cada detalle de este diseño único que integra elementos de tierra, concreto y vegetación en perfecta armonía.</p>
+                
+                <!-- Animación de columnas del primer proyecto -->
+                <div class="animated-columns">
+                    <div class="column column-1">
+                        <div class="item item-1"></div>
+                        <div class="item item-2"></div>
+                        <div class="item item-3"></div>
+                    </div>
+                
+                    <div class="column column-2">
+                        <div class="item item-1"></div>
+                        <div class="item item-2"></div>
+                        <div class="item item-3"></div>
+                    </div>
+                
+                    <div class="column column-3">
+                        <div class="item item-1"></div>
+                        <div class="item item-2"></div>
+                        <div class="item item-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>scroll</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- Sección de sliders -->
+        <section class="sliders-section">
+            <!-- Slider 1 -->
+            <div class="slider-container">
+                <div class="slider-text">
+                    <h2 class="slider-title">Fachada Principal</h2>
+                    <p class="slider-description">
+                        La fachada de terracota define el carácter de la Casa Ankh, donde los tonos tierra 
+                        se integran naturalmente con el paisaje circundante. Cada elemento arquitectónico 
+                        refleja una conexión profunda con la naturaleza.
+                    </p>
+                </div>
+                <div class="image-slider" data-slider="1">
+                    <section class="slider__content">
+                        <button type="button" class="slider-control--button prev-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                            </svg>
+                        </button>
+                        <main class="image-display"></main>
+                        <button type="button" class="slider-control--button next-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                        </button>
+                    </section>
+                    <nav class="slider-navigation">
+                        <button class="nav-button" aria-selected="true">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=1" alt="Thumbnail 1" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=2" alt="Thumbnail 2" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=3" alt="Thumbnail 3" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=4" alt="Thumbnail 4" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=5" alt="Thumbnail 5" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=6" alt="Thumbnail 6" />
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Slider 2 -->
+            <div class="slider-container">
+                <div class="slider-text">
+                    <h2 class="slider-title">Interiores Modernos</h2>
+                    <p class="slider-description">
+                        Los espacios interiores combinan el concreto gris con toques de amarillo mostaza, 
+                        creando ambientes cálidos y contemporáneos. La luz natural es protagonista en 
+                        cada rincón de la casa.
+                    </p>
+                </div>
+                <div class="image-slider" data-slider="2">
+                    <section class="slider__content">
+                        <button type="button" class="slider-control--button prev-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                            </svg>
+                        </button>
+                        <main class="image-display"></main>
+                        <button type="button" class="slider-control--button next-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                        </button>
+                    </section>
+                    <nav class="slider-navigation">
+                        <button class="nav-button" aria-selected="true">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=7" alt="Thumbnail 1" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=8" alt="Thumbnail 2" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=9" alt="Thumbnail 3" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=10" alt="Thumbnail 4" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=11" alt="Thumbnail 5" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=12" alt="Thumbnail 6" />
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Slider 3 -->
+            <div class="slider-container">
+                <div class="slider-text">
+                    <h2 class="slider-title">Integración con el Paisaje</h2>
+                    <p class="slider-description">
+                        La vegetación natural forma parte integral del diseño arquitectónico. Los verdes 
+                        naturales y el azul del cielo crean un diálogo constante entre el interior y 
+                        el exterior de la vivienda.
+                    </p>
+                </div>
+                <div class="image-slider" data-slider="3">
+                    <section class="slider__content">
+                        <button type="button" class="slider-control--button prev-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                            </svg>
+                        </button>
+                        <main class="image-display"></main>
+                        <button type="button" class="slider-control--button next-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                        </button>
+                    </section>
+                    <nav class="slider-navigation">
+                        <button class="nav-button" aria-selected="true">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=13" alt="Thumbnail 1" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=14" alt="Thumbnail 2" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=15" alt="Thumbnail 3" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=16" alt="Thumbnail 4" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=17" alt="Thumbnail 5" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=18" alt="Thumbnail 6" />
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Slider 4 -->
+            <div class="slider-container">
+                <div class="slider-text">
+                    <h2 class="slider-title">Detalles Constructivos</h2>
+                    <p class="slider-description">
+                        Los materiales nobles como la piedra natural y el concreto expuesto definen 
+                        la identidad arquitectónica. Cada detalle constructivo ha sido pensado para 
+                        crear una experiencia sensorial única y duradera.
+                    </p>
+                </div>
+                <div class="image-slider" data-slider="4">
+                    <section class="slider__content">
+                        <button type="button" class="slider-control--button prev-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+                            </svg>
+                        </button>
+                        <main class="image-display"></main>
+                        <button type="button" class="slider-control--button next-button">
+                            <svg width="16" height="16" fill="currentColor" class="icon arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                        </button>
+                    </section>
+                    <nav class="slider-navigation">
+                        <button class="nav-button" aria-selected="true">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=19" alt="Thumbnail 1" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=20" alt="Thumbnail 2" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=21" alt="Thumbnail 3" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=22" alt="Thumbnail 4" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=23" alt="Thumbnail 5" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="https://picsum.photos/800/400?random=24" alt="Thumbnail 6" />
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        class Slider {
+            constructor(slider) {
+                this.slider = slider;
+                this.display = slider.querySelector(".image-display");
+                this.navButtons = Array.from(slider.querySelectorAll(".nav-button"));
+                this.prevButton = slider.querySelector(".prev-button");
+                this.nextButton = slider.querySelector(".next-button");
+                this.sliderNavigation = slider.querySelector(".slider-navigation");
+                this.currentSlideIndex = 0;
+                this.preloadedImages = {};
+
+                this.initialize();
+            }
+
+            initialize() {
+                this.setupSlider();
+                this.preloadImages();
+                this.eventListeners();
+            }
+
+            setupSlider() {
+                this.showSlide(this.currentSlideIndex);
+            }
+
+            showSlide(index) {
+                this.currentSlideIndex = index;
+                const navButtonImg = this.navButtons[
+                    this.currentSlideIndex
+                ].querySelector("img");
+                if (navButtonImg) {
+                    const imgClone = navButtonImg.cloneNode();
+                    this.display.replaceChildren(imgClone);
+                }
+                this.updateNavButtons();
+            }
+
+            updateNavButtons() {
+                this.navButtons.forEach((button, buttonIndex) => {
+                    const isSelected = buttonIndex === this.currentSlideIndex;
+                    button.setAttribute("aria-selected", isSelected);
+                    if (isSelected) button.focus();
+                });
+            }
+
+            preloadImages() {
+                this.navButtons.forEach((button) => {
+                    const imgElement = button.querySelector("img");
+                    if (imgElement) {
+                        const imgSrc = imgElement.src;
+                        if (!this.preloadedImages[imgSrc]) {
+                            this.preloadedImages[imgSrc] = new Image();
+                            this.preloadedImages[imgSrc].src = imgSrc;
+                        }
+                    }
+                });
+            }
+
+            eventListeners() {
+                document.addEventListener("keydown", (event) => {
+                    this.handleAction(event.key);
+                });
+
+                this.sliderNavigation.addEventListener("click", (event) => {
+                    const targetButton = event.target.closest(".nav-button");
+                    const index = targetButton
+                        ? this.navButtons.indexOf(targetButton)
+                        : -1;
+                    if (index !== -1) {
+                        this.showSlide(index);
+                    }
+                });
+
+                this.prevButton.addEventListener("click", () =>
+                    this.handleAction("prev")
+                );
+                this.nextButton.addEventListener("click", () =>
+                    this.handleAction("next")
+                );
+            }
+
+            handleAction(action) {
+                if (action === "Home") {
+                    this.currentSlideIndex = 0;
+                } else if (action === "End") {
+                    this.currentSlideIndex = this.navButtons.length - 1;
+                } else if (action === "ArrowRight" || action === "next") {
+                    this.currentSlideIndex =
+                        (this.currentSlideIndex + 1) % this.navButtons.length;
+                } else if (action === "ArrowLeft" || action === "prev") {
+                    this.currentSlideIndex =
+                        (this.currentSlideIndex - 1 + this.navButtons.length) %
+                        this.navButtons.length;
+                }
+
+                this.showSlide(this.currentSlideIndex);
+            }
+        }
+
+        // Inicializar todos los sliders
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = document.querySelectorAll('.image-slider');
+            sliders.forEach(slider => {
+                new Slider(slider);
+            });
+        });
+    </script>
+</body>
+</html>
