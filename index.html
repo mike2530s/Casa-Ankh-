@@ -27,7 +27,7 @@
             --neutro-crema: rgb(200, 180, 160);
             --marron-oscuro: rgb(40, 40, 40);
             --negro: rgb(20, 20, 20);
-            --amarillo-mostaza: rgb(160, 77, 0);
+            --amarillo-mostaza: rgb(230, 180, 30);
             
             /* Variables de uso */
             --bg-color: var(--marron-oscuro);
@@ -107,46 +107,42 @@
             }
         }
 
-        .text-content p {
+.text-content p {
             font-size: clamp(1rem, 2.5vw, 1.5rem);
             line-height: 1.6;
             color: var(--neutro-crema);
             opacity: 0;
-            animation: typewriter 4s steps(200) 1s forwards;
+            animation: fadeIn 2s ease-out 1s forwards;
+            text-align: center;
+            width: 100%;
+            white-space: normal;
         }
 
-        /* Efecto máquina de escribir para títulos dinámicos */
+        /* Efecto de aparición suave */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        .typewriter-text {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
         .typewriter-text {
             overflow: hidden;
             white-space: nowrap;
             border-right: 2px solid var(--amarillo-mostaza);
-            width: 0;
             animation: 
-                typewriter 3s steps(50) forwards,
+                typewriter 4s steps(200) 1s forwards,
                 blink 1s infinite;
-        }
-
-        .typewriter-text.reset {
-            animation: none;
-            width: 0;
-            opacity: 0;
-        }
-
-        .typewriter-text.animate {
-            animation: 
-                typewriter 3s steps(50) forwards,
-                blink 1s infinite;
-        }
-
-        @keyframes typewriter {
-            from {
-                width: 0;
-                opacity: 1;
-            }
-            to {
-                width: 100%;
-                opacity: 0.9;
-            }
         }
 
         @keyframes blink {
@@ -636,12 +632,10 @@
         <section class="text-section">
             <div class="text-content">
                 <h1>CASA ANKH</h1>
-               <div class="typewriter-text">
-  <p>
-    Un proyecto arquitectónico que fusiona la modernidad con la naturaleza. Aquí puedes explorar cada detalle de este diseño único que integra elementos de tierra, concreto y vegetación en perfecta armonía.
-  </p>
-</div>
-
+                <div class="typewriter-text">
+                    <p>Un proyecto arquitectónico que fusiona la modernidad con la naturaleza. Aquí puedes explorar cada detalle de este diseño único que integra elementos de tierra, concreto y vegetación en perfecta armonía.</p>
+                </div>
+                
                 <!-- Animación de columnas del primer proyecto -->
                 <div class="animated-columns">
                     <div class="column column-1">
@@ -674,8 +668,8 @@
             <!-- Slider 1 -->
             <div class="slider-container">
                 <div class="slider-text">
-                    <h2 class="slider-title" data-slider-title="1">Casa</h2>
-                    <p class="slider-description typewriter-text" data-slider-description="1">
+                    <h2 class="slider-title">Casa</h2>
+                    <p class="slider-description">
                         Proceso de casa
                     </p>
                 </div>
@@ -694,22 +688,22 @@
                         </button>
                     </section>
                     <nav class="slider-navigation">
-                        <button class="nav-button" aria-selected="true" data-title="Fachada Principal" data-description="La fachada de terracota define el carácter de la Casa Ankh, donde los tonos tierra se integran naturalmente con el paisaje circundante.">
+                        <button class="nav-button" aria-selected="true">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=1" alt="Thumbnail 1" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Diseño Exterior" data-description="Cada elemento arquitectónico refleja una conexión profunda con la naturaleza y el entorno.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=2" alt="Thumbnail 2" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Estructura Base" data-description="Los cimientos y la estructura principal de la casa integran materiales nobles y sostenibles.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=3" alt="Thumbnail 3" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Acabados Finales" data-description="Los detalles finales de construcción que dan vida al proyecto arquitectónico.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=4" alt="Thumbnail 4" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Vista Nocturna" data-description="La iluminación nocturna resalta la belleza y calidez de los espacios habitables.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=5" alt="Thumbnail 5" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Integración Total" data-description="La perfecta armonía entre arquitectura moderna y elementos naturales del entorno.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=6" alt="Thumbnail 6" />
                         </button>
                     </nav>
@@ -719,8 +713,8 @@
             <!-- Slider 2 -->
             <div class="slider-container">
                 <div class="slider-text">
-                    <h2 class="slider-title" data-slider-title="2">Topografía</h2>
-                    <p class="slider-description typewriter-text" data-slider-description="2">
+                    <h2 class="slider-title">Topografía</h2>
+                    <p class="slider-description">
                         Proceso de topografía
                     </p>
                 </div>
@@ -739,22 +733,22 @@
                         </button>
                     </section>
                     <nav class="slider-navigation">
-                        <button class="nav-button" aria-selected="true" data-title="Levantamiento Inicial" data-description="Análisis detallado del terreno y sus características naturales para el diseño arquitectónico.">
+                        <button class="nav-button" aria-selected="true">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=7" alt="Thumbnail 1" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Curvas de Nivel" data-description="Mapeo preciso de las elevaciones y pendientes del terreno para la planificación.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=8" alt="Thumbnail 2" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Análisis de Drenaje" data-description="Estudio de los flujos de agua y sistemas de drenaje natural del sitio.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=9" alt="Thumbnail 3" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Preparación del Terreno" data-description="Trabajos de movimiento de tierra y preparación para la construcción.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=10" alt="Thumbnail 4" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Adaptación Natural" data-description="Integración respetuosa de la construcción con la topografía existente.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=11" alt="Thumbnail 5" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Resultado Final" data-description="La perfecta armonía entre la arquitectura y el paisaje natural modificado.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=12" alt="Thumbnail 6" />
                         </button>
                     </nav>
@@ -764,8 +758,8 @@
             <!-- Slider 3 -->
             <div class="slider-container">
                 <div class="slider-text">
-                    <h2 class="slider-title" data-slider-title="3">Muebles</h2>
-                    <p class="slider-description typewriter-text" data-slider-description="3">
+                    <h2 class="slider-title">Muebles</h2>
+                    <p class="slider-description">
                         Proceso de elaboración de muebles
                     </p>
                 </div>
@@ -784,22 +778,22 @@
                         </button>
                     </section>
                     <nav class="slider-navigation">
-                        <button class="nav-button" aria-selected="true" data-title="Diseño de Muebles" data-description="Creación de piezas únicas que complementan la estética arquitectónica de Casa Ankh.">
+                        <button class="nav-button" aria-selected="true">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=13" alt="Thumbnail 1" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Selección de Maderas" data-description="Cuidadosa elección de materiales nobles que armonizan con los tonos terracota.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=14" alt="Thumbnail 2" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Proceso Artesanal" data-description="Trabajo manual especializado que garantiza la calidad y durabilidad de cada pieza.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=15" alt="Thumbnail 3" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Acabados Naturales" data-description="Tratamientos ecológicos que preservan la textura y calidez natural de la madera.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=16" alt="Thumbnail 4" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Integración Espacial" data-description="Mobiliario diseñado específicamente para cada ambiente de la casa.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=17" alt="Thumbnail 5" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Resultado Final" data-description="Piezas que combinan funcionalidad, belleza y sostenibilidad en perfecta armonía.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=18" alt="Thumbnail 6" />
                         </button>
                     </nav>
@@ -809,8 +803,8 @@
             <!-- Slider 4 -->
             <div class="slider-container">
                 <div class="slider-text">
-                    <h2 class="slider-title" data-slider-title="4">Vegetación</h2>
-                    <p class="slider-description typewriter-text" data-slider-description="4">
+                    <h2 class="slider-title">Vegetación</h2>
+                    <p class="slider-description">
                         Proceso de vegetación
                     </p>
                 </div>
@@ -829,27 +823,24 @@
                         </button>
                     </section>
                     <nav class="slider-navigation">
-                        <button class="nav-button" aria-selected="true" data-title="Planificación Verde" data-description="Diseño paisajístico que integra especies nativas con la arquitectura contemporánea.">
+                        <button class="nav-button" aria-selected="true">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=19" alt="Thumbnail 1" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Especies Nativas" data-description="Selección cuidadosa de plantas autóctonas que requieren menor mantenimiento.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=20" alt="Thumbnail 2" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Sistema de Riego" data-description="Implementación de riego eficiente que aprovecha el agua de lluvia.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=21" alt="Thumbnail 3" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Jardines Verticales" data-description="Muros verdes que purifican el aire y crean microclimas naturales.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=22" alt="Thumbnail 4" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Terrazas Verdes" data-description="Espacios elevados que conectan los interiores con la naturaleza.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=23" alt="Thumbnail 5" />
                         </button>
-                        <button class="nav-button" aria-selected="false" data-title="Ecosistema Integrado" data-description="La vegetación madura que forma parte integral del diseño arquitectónico.">
+                        <button class="nav-button" aria-selected="false">
                             <img class="thumbnail" src="https://picsum.photos/800/400?random=24" alt="Thumbnail 6" />
                         </button>
-                    </nav>
-                </div>
-            
                     </nav>
                 </div>
             </div>
@@ -865,8 +856,6 @@
                 this.prevButton = slider.querySelector(".prev-button");
                 this.nextButton = slider.querySelector(".next-button");
                 this.sliderNavigation = slider.querySelector(".slider-navigation");
-                this.titleElement = slider.closest('.slider-container').querySelector('.slider-title');
-                this.descriptionElement = slider.closest('.slider-container').querySelector('.slider-description');
                 this.currentSlideIndex = 0;
                 this.preloadedImages = {};
 
@@ -885,41 +874,14 @@
 
             showSlide(index) {
                 this.currentSlideIndex = index;
-                const navButtonImg = this.navButtons[this.currentSlideIndex].querySelector("img");
-                const navButton = this.navButtons[this.currentSlideIndex];
-                
+                const navButtonImg = this.navButtons[
+                    this.currentSlideIndex
+                ].querySelector("img");
                 if (navButtonImg) {
                     const imgClone = navButtonImg.cloneNode();
                     this.display.replaceChildren(imgClone);
                 }
-
-                // Actualizar título y descripción con animación
-                this.updateTextContent(navButton);
                 this.updateNavButtons();
-            }
-
-            updateTextContent(navButton) {
-                const newTitle = navButton.getAttribute('data-title');
-                const newDescription = navButton.getAttribute('data-description');
-
-                if (newTitle && newDescription) {
-                    // Resetear animación
-                    this.titleElement.style.animation = 'none';
-                    this.descriptionElement.classList.remove('animate');
-                    this.descriptionElement.classList.add('reset');
-
-                    // Pequeño delay para que se vea el reset
-                    setTimeout(() => {
-                        // Cambiar el contenido
-                        this.titleElement.textContent = newTitle;
-                        this.descriptionElement.textContent = newDescription;
-
-                        // Reiniciar animaciones
-                        this.titleElement.style.animation = 'glow 2s ease-in-out infinite alternate';
-                        this.descriptionElement.classList.remove('reset');
-                        this.descriptionElement.classList.add('animate');
-                    }, 100);
-                }
             }
 
             updateNavButtons() {
